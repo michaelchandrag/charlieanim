@@ -1,100 +1,147 @@
+"use client"
+import Modal from "@/component/modal";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+const features = [
+  {
+    icon: "/icons/builder-icon.png",
+    title: "No-Code Agent Builder",
+    desc: "Create DeFi agents with an intuitive drag-and-drop interface & prebuilt strategy templates (DCA, LP, arbitrage)"
+  },
+  {
+    icon: "/icons/chain-icon.png",
+    title: "Cross-Chain Operability",
+    desc: "Interact with 150+ blockchains seamlessly using AI-driven execution"
+  },
+  {
+    icon: "/icons/library-icon.png",
+    title: "Custom Strategy Library",
+    desc: "Optimize trading & yield farming with pre-trained AI models and real-time data feeds"
+  },
+  {
+    icon: "/icons/shield-icon.png",
+    title: "Advanced Verifiability ",
+    desc: "Ensure secure execution with zkML and Trusted Execution Environments (TEEs)"
+  },
+  {
+    icon: "/icons/marketplace-icon.png",
+    title: "Agent Marketplace",
+    desc: "Share, monetize, and discover AI-powered strategies with tokenized royalties"
+  },
+  {
+    icon: "/icons/simulation-icon.png",
+    title: "Smart Simulation",
+    desc: "Test and backtest strategies in a real-time DeFi environment before live deployment"
+  },
+  {
+    icon: "/icons/dashboard-icon.png",
+    title: "Monitoring Dashboard",
+    desc: "Track performance across chains with AI-powered insights and analytics."
+  }
+]
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div>
+      <header className="fixed top-0 bg-transparent transition-colors duration-300 z-10 w-full">
+        <nav className="relative flex items-center justify-between px-16 py-6 shadow-md">
+          <div className="flex-shrink-0">
+            <img src="/logo.png"
+              alt="Lexovate" width={200} />
+          </div>
+          <ul className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 text-sm font-medium">
+            <li className="text-primary">Home</li>
+            <li className="hover:text-primary">Our Mission</li>
+            <li className="hover:text-primary">Features</li>
+          </ul>
+          <div className="flex items-center gap-4">
+            <a className="border border-text-primary rounded-lg p-2">
+              <img src="/icons/x-icon.svg" alt="x" />
+            </a>
+            <a className="border border-text-primary rounded-lg p-2">
+              <img src="/icons/github-icon.svg" alt="github" />
+            </a>
+          </div>
+        </nav>
+      </header>
+      <main className="">
+        <section aria-labelledby="hero" className="h-screen w-full flex flex-col items-center justify-end">
+          <video
+            className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
+            src={"https://s3-figma-videos-production-sig.figma.com/video/TEAM/1170563733121532378/fe1b78e8671705da2b9f93d8b3e7fd6d6c4edc14?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=P0Ek6-wJK2ANP2XyymBJk5hPKY-kFflN7AxivUZfL5Z4~2gNcE-VIfzcASINkAd6cp0trWhQ9aR--oTHf0V6bY9I8BPkt9QAvyl~~TXNYRa99t5rYjruw3FBzFlqJfvN3M-jMwq21pDWc81vSPbjpKQs475q2knV9bA~szaswf2itO0penTmIhiaQTFvr0YIR1VAhDUZPFBmwqFjlELnNBneZlyTZgrr1Sj6N2glHjkflhPaAg1xS4FiTexb0bNu113Uvt97vrCFL8WofepyhjSwe82Znhuz-FA-kvwUe0DcEr9ORQMOWQdcy0T~Jp4SZY8KmibU93Rb6oPphZv31A__"}
+            autoPlay muted loop>
+          </video>
+          <div className="text-center flex flex-col items-center px-4">
+            <div className="rounded-lg flex items-center justify-between w-full max-w-[40rem] bg-white/15 mb-10">
+              <p className="text-sm px-4 py-3">9kEcnFj9vwjUkjdsL89fGhKloP76qseTuv7</p>
+              <div className="flex gap-2.5 rounded-r-lg items-center bg-white/15 px-4 py-3">
+                <img src="/icons/copy-icon.svg" />
+                <span>Copy CA</span>
+              </div>
+            </div>
+            <h4 className="font-semibold mb-2">Empowering You to Build Smarter DeFi Agents -</h4>
+            <h1 className="font-bold mb-14">Without Writing a Single Line of Code</h1>
+          </div>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        <section aria-labelledby="mission" className="bg-white text-background py-24 px-11">
+          <h2 id="mission-title" className="font-extrabold">OUR <br /> MISSION</h2>
+          <p className="mt-6 text-3xl indent-mission-section">{"Lexovate is a decentralized, no-code platform that democratizes access to advanced DeFi strategies. Our mission is to enable anyone—from crypto enthusiasts to seasoned investors—to create, deploy, and manage AI-powered DeFi agents effortlessly. By leveraging cutting-edge artificial intelligence and multi-chain compatibility, Lexovate redefines how users interact with decentralized finance, making it simpler, smarter, and more profitable."}</p>
+        </section>
+
+        <section aria-labelledby="features" className="relative bg-background">
+          <img src="/media/features-bg.jpeg" className="absolute inset-0 h-full object-cover z-0" />
+          <div class="absolute inset-0 bg-black/70 z-1"></div>
+          <div className="relative py-32 px-16 grid grid-cols-2 gap-16 z-2">
+            <div>
+              <h2 className="font-extrabold">Our Core Feature</h2>
+              <p className="text-2xl font-medium mt-6">
+                Empowering Users to Build, Deploy, and Optimize Autonomous DeFi Agents with No-Code Tools, AI-Driven Strategies, and Cross-Chain Compatibility
+              </p>
+            </div>
+            {features.map(feat =>
+              <div className="flex flex-col gap-6" key={feat.title}>
+                <img src={feat.icon} height={60} width={60} />
+                <p className="text-2xl leading-7 font-semibold">{feat.title}</p>
+                <p className="text-xl leading-6 font-medium">{feat.desc}</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section aria-labelledby="contact-title" className="px-20 bg-background flex flex-col">
+          <h3 className="max-w-[505px] font-bold mt-24 mb-24">
+            Try It Yourself:
+            <br />
+            Interactive Walkthroughs of Our DeFi Platform
+          </h3>
+          <div className="self-center mb-52 max-w-[612px]">
+            <p className="text-[2rem] leading-9 mb-16">
+              The beta demo is launching soon! Join our early access program to be the first to experience the future of DeFi strategy-building.
+            </p>
+            <button className="border border-text-primary rounded-full font-semibold text-xl py-4 px-6 flex items-center gap-4">Join Beta Version <img src="/icons/arrow-icon.svg"/></button>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className="bg-background">
+        <div className="flex justify-between items-center pt-20 pb-36 px-16">
+          <img src="/logo.png"
+            alt="Lexovate" height={77} />
+          <div className="flex flex-col items-center">
+            <p className="text-text-secondary text-sm">Smarter DeFi Agents -</p>
+            <p className="font-semibold">Without Writing a Single Line of Code</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <p className="text-text-secondary text-sm">Follow Us on X</p>
+            <Link href={"https://x.com/lexovateAI"} className="font-semibold underline">@lexovateAI</Link>
+          </div>
+        </div>
+        <div className="flex justify-center border-t border-text-primary py-8">
+          <p className="font-medium"> Copyright © 2024-25 ShardspireAI</p>
+        </div>
       </footer>
     </div>
   );

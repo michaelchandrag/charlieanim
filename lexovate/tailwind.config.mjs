@@ -9,8 +9,13 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
+        ["text-primary"]: "var(--text-primary)",
+        ["text-secondary"]:"var(--text-secondary)",
+        ["primary"]:"var(--primary-color)"
       },
+      textIndent: {
+        'mission-section': 'clamp(0px, 40%, 500px)',
+      }
     },
   },
   plugins: [],
