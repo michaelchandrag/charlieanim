@@ -1,10 +1,8 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
-import { useState } from "react";
 
-export default function HoverButton({iconImgProps, children, buttonProps, buttonClass}) {
-  const [hovered, setHovered] = useState(false);
+export default function HoverButton({ icon, children, buttonProps, buttonClass }) {
   const controls = useAnimation();
 
   const handleHoverStart = () => {
@@ -13,23 +11,18 @@ export default function HoverButton({iconImgProps, children, buttonProps, button
       opacity: [1, 0, 0, 1],
       transition: { duration: 0.4, ease: "easeInOut" },
     });
-    setHovered(true);
   };
-
-  const handleHoverEnd = () => setHovered(false);
 
   return (
     <motion.button
       onHoverStart={handleHoverStart}
-      onHoverEnd={handleHoverEnd}
       className={`relative overflow-hidden ${buttonClass}`}
       {...buttonProps}
     >
       {children}
-      <motion.img
-        animate={controls}
-        {...iconImgProps}
-      />
+      <motion.div animate={controls}>
+        {icon}
+      </motion.div>
     </motion.button>
   );
 }

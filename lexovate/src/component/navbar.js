@@ -1,11 +1,14 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useScroll } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import HoverButton from "./icon-button";
-
+import XIcon from '@/assets/x-icon.svg';
+import GithubIcon from '@/assets/github-icon.svg';
 
 export default function Navbar({xLink, github}) {
   const activeSection = useActiveSection();
   const [isScrolled, setIsScrolled] = useState(false);
+  const isMission = activeSection == "mission"
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -30,28 +33,22 @@ export default function Navbar({xLink, github}) {
             alt="Lexovate" width={200} />
         </div>
         <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 text-sm font-medium">
-          <a href="#home" className={`hover:text-primary ${activeSection == "home" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Home</a>
-          <a href="#mission" className={`hover:text-primary ${activeSection == "mission" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Our Mission</a>
-          <a href="#features" className={`hover:text-primary ${activeSection == "features" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Features</a>
+          <a href="#home" className={`hover:text-primary ${activeSection == "home" ? "text-primary" : isMission ? "text-background" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Home</a>
+          <a href="#mission" className={`hover:text-primary ${activeSection == "mission" ? "text-primary" : isMission ? "text-background" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Our Mission</a>
+          <a href="#features" className={`hover:text-primary ${activeSection == "features" ? "text-primary" : isMission ? "text-background" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Features</a>
         </div>
         <div className="flex items-center gap-4">
           <a href={xLink || ""}>
             <HoverButton
-              buttonClass={"border border-text-primary rounded-lg p-2"}
-              iconImgProps={{
-                src: "/icons/x-icon.svg",
-                alt: "x",
-                height: 20
-              }} />
+              buttonClass={`border ${ isMission ? "border-background" : "border-text-primary"} transition-colors rounded-lg p-2`}
+              icon={<XIcon alt="x" className={`${isMission ? "text-background" : ""} transition-colors`}/>}
+              />
           </a>
           <a href={github || ""}>
             <HoverButton
-              buttonClass={"border border-text-primary rounded-lg p-2"}
-              iconImgProps={{
-                src: "/icons/github-icon.svg",
-                alt: "github",
-                height: 20
-              }} />
+              buttonClass={`border ${ isMission ? "border-background" : "border-text-primary"} transition-colors rounded-lg p-2`}
+              icon={<GithubIcon alt="github" className={`${isMission ? "text-background" : ""} transition-colors`}/>}
+              />
           </a>
         </div>
       </nav>
@@ -59,32 +56,36 @@ export default function Navbar({xLink, github}) {
   );
 }
 
-
 const useActiveSection = () => {
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState(null);
+  const sectionsRef = useRef();
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Adjust as needed
-        rootMargin: "-30% 0px -70% 0px", // Offsets the viewport
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
+    sectionsRef.current = document.querySelectorAll("section");
+    requestAnimationFrame(() => {
+      const initialScrollY = window.scrollY;
+      updateActiveSection(initialScrollY);
+    });
   }, []);
 
+  const { scrollY } = useScroll();
+
+  const updateActiveSection = (scrollPosition) => {
+    sectionsRef.current?.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const offsetTop = rect.top + window.scrollY;
+
+      if (
+        scrollPosition >= offsetTop &&
+        scrollPosition < offsetTop + rect.height
+      ) {
+        setActiveSection(section.id);
+      }
+    });
+  };
+
+  useEffect(() => {
+    return scrollY.onChange(updateActiveSection);
+  }, [scrollY]);
   return activeSection;
 };
