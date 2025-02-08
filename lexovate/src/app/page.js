@@ -1,5 +1,6 @@
 "use client"
 import Modal from "@/component/modal";
+import Navbar from "@/component/navbar";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -46,29 +47,9 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div>
-      <header className="fixed top-0 bg-transparent transition-colors duration-300 z-10 w-full">
-        <nav className="relative flex items-center justify-between px-16 py-6 shadow-md">
-          <div className="flex-shrink-0">
-            <img src="/logo.png"
-              alt="Lexovate" width={200} />
-          </div>
-          <ul className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 text-sm font-medium">
-            <li className="text-primary">Home</li>
-            <li className="hover:text-primary">Our Mission</li>
-            <li className="hover:text-primary">Features</li>
-          </ul>
-          <div className="flex items-center gap-4">
-            <a className="border border-text-primary rounded-lg p-2">
-              <img src="/icons/x-icon.svg" alt="x" />
-            </a>
-            <a className="border border-text-primary rounded-lg p-2">
-              <img src="/icons/github-icon.svg" alt="github" />
-            </a>
-          </div>
-        </nav>
-      </header>
+      <Navbar/>
       <main className="">
-        <section aria-labelledby="hero" className="h-screen w-full flex flex-col items-center justify-end">
+        <section id="home" aria-labelledby="hero" className="h-screen w-full flex flex-col items-center justify-end">
           <video
             className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
             src={"https://s3-figma-videos-production-sig.figma.com/video/TEAM/1170563733121532378/fe1b78e8671705da2b9f93d8b3e7fd6d6c4edc14?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=P0Ek6-wJK2ANP2XyymBJk5hPKY-kFflN7AxivUZfL5Z4~2gNcE-VIfzcASINkAd6cp0trWhQ9aR--oTHf0V6bY9I8BPkt9QAvyl~~TXNYRa99t5rYjruw3FBzFlqJfvN3M-jMwq21pDWc81vSPbjpKQs475q2knV9bA~szaswf2itO0penTmIhiaQTFvr0YIR1VAhDUZPFBmwqFjlELnNBneZlyTZgrr1Sj6N2glHjkflhPaAg1xS4FiTexb0bNu113Uvt97vrCFL8WofepyhjSwe82Znhuz-FA-kvwUe0DcEr9ORQMOWQdcy0T~Jp4SZY8KmibU93Rb6oPphZv31A__"}
@@ -87,14 +68,14 @@ export default function Home() {
           </div>
         </section>
 
-        <section aria-labelledby="mission" className="bg-white text-background py-24 px-11">
+        <section id="mission" aria-labelledby="mission" className="bg-white text-background py-24 px-11">
           <h2 id="mission-title" className="font-extrabold">OUR <br /> MISSION</h2>
           <p className="mt-6 text-3xl indent-mission-section">{"Lexovate is a decentralized, no-code platform that democratizes access to advanced DeFi strategies. Our mission is to enable anyone—from crypto enthusiasts to seasoned investors—to create, deploy, and manage AI-powered DeFi agents effortlessly. By leveraging cutting-edge artificial intelligence and multi-chain compatibility, Lexovate redefines how users interact with decentralized finance, making it simpler, smarter, and more profitable."}</p>
         </section>
 
-        <section aria-labelledby="features" className="relative bg-background">
+        <section id="features" aria-labelledby="features" className="relative bg-background">
           <img src="/media/features-bg.jpeg" className="absolute inset-0 h-full object-cover z-0" />
-          <div class="absolute inset-0 bg-black/70 z-1"></div>
+          <div className="absolute inset-0 bg-black/70 z-1"></div>
           <div className="relative py-32 px-16 grid grid-cols-2 gap-16 z-2">
             <div>
               <h2 className="font-extrabold">Our Core Feature</h2>
@@ -122,8 +103,9 @@ export default function Home() {
             <p className="text-[2rem] leading-9 mb-16">
               The beta demo is launching soon! Join our early access program to be the first to experience the future of DeFi strategy-building.
             </p>
-            <button className="border border-text-primary rounded-full font-semibold text-xl py-4 px-6 flex items-center gap-4">Join Beta Version <img src="/icons/arrow-icon.svg"/></button>
+            <button className="border border-text-primary rounded-full font-semibold text-xl py-4 px-6 flex items-center gap-4" onClick={() => setIsModalOpen(true)}>Join Beta Version <img src="/icons/arrow-icon.svg" /></button>
           </div>
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}/>
         </section>
       </main>
       <footer className="bg-background">
