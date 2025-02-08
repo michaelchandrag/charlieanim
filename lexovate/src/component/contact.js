@@ -2,25 +2,25 @@
 import { StaggerText } from "@/component/mission";
 import Modal from "@/component/modal";
 import { useScroll, useTransform, motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY,
-    [2300, 2400], // Range of scroll position in pixels
-    [50, 0],  // Y movement range, starts at 100px and moves up to -50px
-    { clamp: false });
-  console.log(scrollY, "position")
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"]
+  })
+  const y = useTransform(scrollYProgress, [0.5, 1], [150, 0]);
   return (
-    <section aria-labelledby="contact-title" className="px-20 bg-background flex flex-col">
+    <section ref={ref} aria-labelledby="contact-title" className="px-20 bg-background flex flex-col">
 
       <h3 className="max-w-[505px] font-bold mt-24 mb-24">
         <StaggerText text={"Try It Yourself:"} />
         <StaggerText text={"Interactive Walkthroughs of Our DeFi Platform"} />
       </h3>
       <motion.div
-        // style={{ y }}
+        style={{ y }}
         className="self-center mb-52 max-w-[612px]"
       >
         <p className="text-[2rem] leading-9 mb-16">

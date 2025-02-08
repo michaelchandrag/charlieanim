@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const features = [
@@ -42,20 +42,24 @@ const features = [
 ]
 
 export default function Features() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"]
+  })
+  const scale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
   return (
-    <section id="features" aria-labelledby="features" className="relative bg-background z-5">
-      <img src="/media/features-bg.jpeg" className="absolute inset-0 h-full object-cover z-0" />
+    <section ref={ref} id="features" aria-labelledby="features" className="relative bg-background z-5 overflow-hidden">
+      <motion.img src="/media/features-bg.jpeg" className="absolute inset-0 h-full object-cover z-0" style={{ scale }} />
       <div className="absolute inset-0 bg-black/70 z-1"></div>
       <div className="relative py-32 px-16 grid grid-cols-2 gap-16 z-2">
         <div>
-        <FadeInView><h2 className="font-extrabold" delay={0.2}>Our Core Feature</h2></FadeInView>
-        <FadeInView delay={0.3}>
-        <p className="text-2xl font-medium mt-6">
-            Empowering Users to Build, Deploy, and Optimize Autonomous DeFi Agents with No-Code Tools, AI-Driven Strategies, and Cross-Chain Compatibility
-          </p>
-        </FadeInView>
-
-          
+          <FadeInView><h2 className="font-extrabold" delay={0.2}>Our Core Feature</h2></FadeInView>
+          <FadeInView delay={0.3}>
+            <p className="text-2xl font-medium mt-6">
+              Empowering Users to Build, Deploy, and Optimize Autonomous DeFi Agents with No-Code Tools, AI-Driven Strategies, and Cross-Chain Compatibility
+            </p>
+          </FadeInView>
         </div>
         {features.map(feat =>
           <FadeInView key={feat.title} fadeUp hover>
