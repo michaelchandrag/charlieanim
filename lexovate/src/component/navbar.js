@@ -34,9 +34,9 @@ export default function Navbar() {
             alt="Lexovate" width={200} />
         </div>
         <ul className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 text-sm font-medium">
-          <li className={`hover:text-primary ${activeSection == "home" ? "text-primary" : ""} transition-colors`}><a href="#home">Home</a></li>
-          <li className={`hover:text-primary ${activeSection == "mission" ? "text-primary" : ""} transition-colors`}><a href="#mission">Our Mission</a></li>
-          <li className={`hover:text-primary ${activeSection == "features" ? "text-primary" : ""} transition-colors`}><a href="#features">Features</a></li>
+          <li className={`hover:text-primary ${activeSection == "home" ? "text-primary" : ""} hover:-translate-y-1 transition-all duration-200`}><a href="#home">Home</a></li>
+          <li className={`hover:text-primary ${activeSection == "mission" ? "text-primary" : ""} hover:-translate-y-1 transition-all duration-200`}><a href="#mission">Our Mission</a></li>
+          <li className={`hover:text-primary ${activeSection == "features" ? "text-primary" : ""} hover:-translate-y-1 transition-all duration-200`}><a href="#features">Features</a></li>
         </ul>
         <div className="flex items-center gap-4">
           <a>
