@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { FadeInView } from "./features";
 
 export default function Footer() {
@@ -14,7 +14,7 @@ export default function Footer() {
         </div></FadeInView>
         <FadeInView delay={0.4}> <div className="flex flex-col items-center">
           <p className="text-text-secondary text-sm">Follow Us on X</p>
-          <Link href={"https://x.com/lexovateAI"} className="font-semibold underline">@lexovateAI</Link>
+          <motion.a href={"https://x.com/lexovateAI"} className="font-semibold underline" initial={{x:0}} whileHover={{x:4}} >@lexovateAI</motion.a>
         </div></FadeInView>
       </div>
       <div className="flex justify-center border-t border-text-primary py-8">

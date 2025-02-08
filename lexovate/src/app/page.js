@@ -1,4 +1,5 @@
 import Contact from "@/component/contact";
+import Cursor from "@/component/cursor";
 import Features from "@/component/features";
 import Footer from "@/component/footer";
 import Hero from "@/component/hero";
@@ -8,16 +9,17 @@ import Navbar from "@/component/navbar";
 export default function Home() {
   return (
     <div>
+      <Cursor />
       <Navbar />
-      <main >
+      <main>
         <Hero />
         <div className="bg-background relative">
-          <Mission/>
-          <Features/>
-          <Contact/>
+          <Mission />
+          <Features />
+          <Contact />
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

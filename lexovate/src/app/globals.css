@@ -25,6 +25,15 @@ body {
 
 html {
   scroll-behavior: smooth;
+  cursor: none;
+}
+
+a {
+  cursor: none;
+}
+
+button {
+  cursor: none;
 }
 
 .sticky-background {
@@ -56,4 +65,17 @@ h4{
 
 p{
   text-align: justify;
+}
+
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 16px;
+  background-color: white;
+  mix-blend-mode: difference;
+  z-index: 999;
+  pointer-events: none;
 }

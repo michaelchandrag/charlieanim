@@ -22,7 +22,7 @@ export default function HoverButton({iconImgProps, children, buttonProps, button
     <motion.button
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
-      className={`relative overflow-hidden cursor-pointer ${buttonClass}`}
+      className={`relative overflow-hidden ${buttonClass}`}
       {...buttonProps}
     >
       {children}
