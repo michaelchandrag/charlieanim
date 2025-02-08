@@ -1,5 +1,6 @@
 "use client"
 import Hero from "@/component/hero";
+import Mission from "@/component/mission";
 import Modal from "@/component/modal";
 import Navbar from "@/component/navbar";
 import Image from "next/image";
@@ -52,10 +53,7 @@ export default function Home() {
       <main >
         <Hero />
         <div className="bg-background relative">
-          <section id="mission" aria-labelledby="mission" className="bg-white text-background py-24 px-11 z-10">
-            <h2 id="mission-title" className="font-extrabold">OUR <br /> MISSION</h2>
-            <p className="mt-6 text-3xl indent-mission-section">{"Lexovate is a decentralized, no-code platform that democratizes access to advanced DeFi strategies. Our mission is to enable anyone—from crypto enthusiasts to seasoned investors—to create, deploy, and manage AI-powered DeFi agents effortlessly. By leveraging cutting-edge artificial intelligence and multi-chain compatibility, Lexovate redefines how users interact with decentralized finance, making it simpler, smarter, and more profitable."}</p>
-          </section>
+          <Mission/>
           <section id="features" aria-labelledby="features" className="relative bg-background z-5">
             <img src="/media/features-bg.jpeg" className="absolute inset-0 h-full object-cover z-0" />
             <div className="absolute inset-0 bg-black/70 z-1"></div>
