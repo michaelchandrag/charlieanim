@@ -1,4 +1,5 @@
 "use client"
+import Contact from "@/component/contact";
 import Features from "@/component/features";
 import Hero from "@/component/hero";
 import Mission from "@/component/mission";
@@ -6,10 +7,8 @@ import Modal from "@/component/modal";
 import Navbar from "@/component/navbar";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div>
       <Navbar />
@@ -18,21 +17,7 @@ export default function Home() {
         <div className="bg-background relative">
           <Mission/>
           <Features/>
-
-          <section aria-labelledby="contact-title" className="px-20 bg-background flex flex-col">
-            <h3 className="max-w-[505px] font-bold mt-24 mb-24">
-              Try It Yourself:
-              <br />
-              Interactive Walkthroughs of Our DeFi Platform
-            </h3>
-            <div className="self-center mb-52 max-w-[612px]">
-              <p className="text-[2rem] leading-9 mb-16">
-                The beta demo is launching soon! Join our early access program to be the first to experience the future of DeFi strategy-building.
-              </p>
-              <button className="border border-text-primary rounded-full font-semibold text-xl py-4 px-6 flex items-center gap-4" onClick={() => setIsModalOpen(true)}>Join Beta Version <img src="/icons/arrow-icon.svg" /></button>
-            </div>
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-          </section>
+          <Contact/>
         </div>
       </main>
       <footer className="bg-background relative">
