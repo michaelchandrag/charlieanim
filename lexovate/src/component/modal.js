@@ -69,7 +69,7 @@ const Modal = ({ isOpen, onClose }) => {
                 Thank you for your interest in LexovateAI ! We're currently developing the beta version. Please enter your email below to gain access to our exclusive demo as soon as it's ready!
               </p>
               <form>
-                <input placeholder="Enter your email address" className="w-full rounded-lg text-background p-4 mb-6 bg-[#FAFAFA] focus:outline-primary active:outline-primary-primary"
+                <input placeholder="Enter your email address" className="font-jost w-full rounded-lg text-background p-4 mb-6 bg-[#FAFAFA] focus:outline-primary active:outline-primary-primary"
                   required type="email" />
                 <motion.button
                   whileHover="hover"

@@ -63,7 +63,7 @@ export default function Hero({caKey}) {
           transition={{ delay: initDelay + 0.15, duration: 0.7, ease: "easeOut" }}
         >
           <div className="rounded-lg flex items-center justify-between w-full max-w-[40rem] bg-white/15 mb-10">
-            <p className="text-sm px-4 py-3 min-w-48">{caKey}</p>
+            <p className="text-sm px-4 py-3 min-w-48 font-jost truncate">{caKey}</p>
             <div>
               <motion.button
                 whileHover="hover"
@@ -80,7 +80,7 @@ export default function Hero({caKey}) {
                     x: "-100%"
                   }}
                 />
-                <span className="relative z-10 flex gap-2.5 items-center">
+                <span className="relative z-10 flex gap-2.5 items-center font-jost">
                   <img src="/icons/copy-icon.svg" />
                   <span>Copy CA</span>
                 </span>
@@ -88,7 +88,7 @@ export default function Hero({caKey}) {
               <AnimatePresence>
                 {showToast && (
                   <motion.div
-                    className="absolute top-[-50px] bg-white/15 px-4 py-2 rounded-md shadow-lg text-center"
+                    className="absolute top-[-50px] bg-white/15 px-4 py-2 rounded-md shadow-lg text-center font-jost"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}

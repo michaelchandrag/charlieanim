@@ -11,7 +11,11 @@ export default {
       },
       textIndent: {
         'mission-section': 'clamp(0px, 40%, 500px)',
-      }
+      },
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        jost: ["var(--font-jost)"],
+      },
     },
   },
   safelist: [
