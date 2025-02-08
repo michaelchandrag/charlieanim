@@ -71,7 +71,7 @@ export default function Features() {
   );
 }
 
-function FadeInView({ children, delay, fadeUp, hover }) {
+export function FadeInView({ children, delay, fadeUp, hover }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (

@@ -29,6 +29,7 @@ export default function Contact() {
         <motion.button
           whileHover="hover"
           className="border border-text-primary rounded-full font-semibold text-xl py-4 px-6 flex items-center gap-4"
+          onClick={()=>setIsModalOpen(true)}
         >
           <motion.span
             className="block"

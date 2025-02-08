@@ -7,17 +7,6 @@ const desc = "Lexovate is a decentralized, no-code platform that democratizes ac
 export default function Mission() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const descRef = useRef(null);
-  const isDescInView = useInView(descRef, { once: true });
-  const variants = {
-    hidden: { opacity: 0 },
-    show: (i) => ({
-      y: 0,
-      opacity: 1,
-      transition: { delay: i * 0.005 },
-    }),
-  };
-  const letters = desc.split('');
   return (
     <section id="mission" aria-labelledby="mission" className="bg-white text-background py-24 px-11 z-10">
       <motion.h2 id="mission-title" className="font-extrabold" ref={ref}
