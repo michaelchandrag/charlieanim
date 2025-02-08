@@ -1,13 +1,9 @@
 "use client"
 import { useEffect, useState } from "react";
-import Modal from "@/component/modal";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion"
 import HoverButton from "./icon-button";
 
 
-export default function Navbar() {
+export default function Navbar({xLink, github}) {
   const activeSection = useActiveSection();
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -33,13 +29,13 @@ export default function Navbar() {
           <img src="/logo.png"
             alt="Lexovate" width={200} />
         </div>
-        <ul className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 text-sm font-medium">
-          <li className={`hover:text-primary ${activeSection == "home" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}><a href="#home">Home</a></li>
-          <li className={`hover:text-primary ${activeSection == "mission" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}><a href="#mission">Our Mission</a></li>
-          <li className={`hover:text-primary ${activeSection == "features" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}><a href="#features">Features</a></li>
-        </ul>
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 text-sm font-medium">
+          <a href="#home" className={`hover:text-primary ${activeSection == "home" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Home</a>
+          <a href="#mission" className={`hover:text-primary ${activeSection == "mission" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Our Mission</a>
+          <a href="#features" className={`hover:text-primary ${activeSection == "features" ? "text-primary" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Features</a>
+        </div>
         <div className="flex items-center gap-4">
-          <a>
+          <a href={xLink || ""}>
             <HoverButton
               buttonClass={"border border-text-primary rounded-lg p-2"}
               iconImgProps={{
@@ -48,7 +44,7 @@ export default function Navbar() {
                 height: 20
               }} />
           </a>
-          <a>
+          <a href={github || ""}>
             <HoverButton
               buttonClass={"border border-text-primary rounded-lg p-2"}
               iconImgProps={{

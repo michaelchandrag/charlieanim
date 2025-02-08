@@ -1,14 +1,13 @@
 "use client";
-
 import { AnimatePresence, motion, useAnimation, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-export default function Hero() {
+export default function Hero({caKey}) {
   const [showToast, setShowToast] = useState(false);
 
   const handleClick = () => {
     setShowToast(true);
-    navigator.clipboard.writeText(key);
+    navigator.clipboard.writeText(caKey || '');
     setTimeout(() => setShowToast(false), 500);
   };
 
@@ -42,8 +41,6 @@ export default function Hero() {
     sequence();
   }, [controls]);
 
-  const key = "9kEcnFj9vwjUkjdsL89fGhKloP76qseTuv7"
-
   return (
     <section id="home" aria-labelledby="hero" className="h-screen w-full flex flex-col items-center justify-end relative">
       <motion.video
@@ -66,7 +63,7 @@ export default function Hero() {
           transition={{ delay: initDelay + 0.15, duration: 0.7, ease: "easeOut" }}
         >
           <div className="rounded-lg flex items-center justify-between w-full max-w-[40rem] bg-white/15 mb-10">
-            <p className="text-sm px-4 py-3">{key}</p>
+            <p className="text-sm px-4 py-3 min-w-48">{caKey}</p>
             <div>
               <motion.button
                 whileHover="hover"
