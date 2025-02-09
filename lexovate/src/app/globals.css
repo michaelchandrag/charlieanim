@@ -58,6 +58,12 @@ p {
   text-align: justify;
 }
 
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
 .cursor {
   position: fixed;
   left: 0;
