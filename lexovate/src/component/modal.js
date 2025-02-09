@@ -33,7 +33,7 @@ const Modal = ({ isOpen, onClose, onSubmit }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, duration: 0.1, ease: "easeInOut" }}
           exit={{ opacity: 0 }}
-          className="fixed top-0 left-0 h-screen w-screen z-50 bg-black/70 flex items-center justify-center"
+          className="fixed top-0 left-0 full-height w-dvw min-w-[1000px] z-50 bg-black/70 flex items-center justify-center"
           onClick={handleOverlayClick}
           ref={overlayRef}
         >

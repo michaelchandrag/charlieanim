@@ -40,14 +40,14 @@ export default function Hero({ caKey }) {
     };
     sequence();
   }, [controls]);
-  // useEffect(() => {
-  //   const updateVh = () => {
-  //     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-  //   };
-  //   updateVh();
-  //   window.addEventListener('resize', updateVh);
-  //   return () => window.removeEventListener('resize', updateVh);
-  // }, []);
+  useEffect(() => {
+    const updateVh = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+    updateVh();
+    window.addEventListener('resize', updateVh);
+    return () => window.removeEventListener('resize', updateVh);
+  }, []);
 
   return (
     <section id="home" aria-labelledby="hero" className="full-height h-screen w-full flex flex-col items-center justify-end relative">

@@ -14,9 +14,9 @@ body {
   color: var(--text-primary);
   background: var(--background);
   font-family: var(--font-inter);
-  /* width: 100%; */
-  /* min-width: 1000px; */
-  /* -webkit-text-size-adjust: 100%; */
+  width: 100%;
+  min-width: 1000px;
+  -webkit-text-size-adjust: 100%;
 }
 
 
