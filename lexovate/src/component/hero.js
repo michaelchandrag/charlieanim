@@ -2,7 +2,7 @@
 import { AnimatePresence, motion, useAnimation, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-export default function Hero({caKey}) {
+export default function Hero({ caKey }) {
   const [showToast, setShowToast] = useState(false);
 
   const handleClick = () => {
@@ -12,7 +12,7 @@ export default function Hero({caKey}) {
   };
 
   const { scrollY } = useScroll();
-  const yPosition = useTransform(scrollY, [0, 400], [0, 100]);
+  const yPosition = useTransform(scrollY, [0, 300], [0, 150]);
   const initDelay = 1
 
   const controls = useAnimation();
@@ -40,16 +40,24 @@ export default function Hero({caKey}) {
     };
     sequence();
   }, [controls]);
+  // useEffect(() => {
+  //   const updateVh = () => {
+  //     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+  //   };
+  //   updateVh();
+  //   window.addEventListener('resize', updateVh);
+  //   return () => window.removeEventListener('resize', updateVh);
+  // }, []);
 
   return (
-    <section id="home" aria-labelledby="hero" className="h-screen w-full flex flex-col items-center justify-end relative">
+    <section id="home" aria-labelledby="hero" className="full-height h-screen w-full flex flex-col items-center justify-end relative">
       <motion.video
         ref={videoRef}
         className="fixed top-0 left-0 w-full h-full object-cover z-[-1]"
         src={"https://s3-figma-videos-production-sig.figma.com/video/TEAM/1170563733121532378/fe1b78e8671705da2b9f93d8b3e7fd6d6c4edc14?Expires=1739750400&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=P0Ek6-wJK2ANP2XyymBJk5hPKY-kFflN7AxivUZfL5Z4~2gNcE-VIfzcASINkAd6cp0trWhQ9aR--oTHf0V6bY9I8BPkt9QAvyl~~TXNYRa99t5rYjruw3FBzFlqJfvN3M-jMwq21pDWc81vSPbjpKQs475q2knV9bA~szaswf2itO0penTmIhiaQTFvr0YIR1VAhDUZPFBmwqFjlELnNBneZlyTZgrr1Sj6N2glHjkflhPaAg1xS4FiTexb0bNu113Uvt97vrCFL8WofepyhjSwe82Znhuz-FA-kvwUe0DcEr9ORQMOWQdcy0T~Jp4SZY8KmibU93Rb6oPphZv31A__"}
         autoPlay
         muted
-        // loop
+        loop
         initial={{ scale: 0.5, y: '100%', clipPath: "inset(20% 15% 20% 15%)" }}
         animate={controls}
       />

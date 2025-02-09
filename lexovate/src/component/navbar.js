@@ -32,7 +32,7 @@ export default function Navbar({xLink, github}) {
           <img src="/logo.png"
             alt="Lexovate" width={200} />
         </div>
-        <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 text-sm font-medium">
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex space-x-8 font-medium">
           <a href="#home" className={`hover:text-primary ${activeSection == "home" ? "text-primary" : isMission ? "text-background" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Home</a>
           <a href="#mission" className={`hover:text-primary ${activeSection == "mission" ? "text-primary" : isMission ? "text-background" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Our Mission</a>
           <a href="#features" className={`hover:text-primary ${activeSection == "features" ? "text-primary" : isMission ? "text-background" : ""} hover:-translate-y-[2px] transition-all duration-200`}>Features</a>

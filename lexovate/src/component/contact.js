@@ -3,9 +3,18 @@ import { StaggerText } from "@/component/mission";
 import Modal from "@/component/modal";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef, useState } from "react";
+import Toast from "./toast";
 
 export default function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isToastVisible, setIsToastVisible] = useState(false);
+
+  const handleSubmit = () => {
+    setIsModalOpen(false);
+    setIsToastVisible(true);
+    setTimeout(() => setIsToastVisible(false), 2500);
+  };
+
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -14,7 +23,6 @@ export default function Contact() {
   const y = useTransform(scrollYProgress, [0.5, 1], [150, 0]);
   return (
     <section ref={ref} aria-labelledby="contact-title" className="px-20 bg-background flex flex-col">
-
       <h3 className="max-w-[505px] font-bold mt-24 mb-24">
         <StaggerText text={"Try It Yourself:"} />
         <StaggerText text={"Interactive Walkthroughs of Our DeFi Platform"} />
@@ -49,7 +57,8 @@ export default function Contact() {
           />
         </motion.button>
       </motion.div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleSubmit}/>
+      <Toast isVisible={isToastVisible} message={"Thank you! We'll notify you when the demo is available."} />
     </section>
 
   );

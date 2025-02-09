@@ -50,7 +50,7 @@ export default function Features() {
   const scale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
   return (
     <section ref={ref} id="features" aria-labelledby="features" className="relative bg-background z-5 overflow-hidden">
-      <motion.img src="/media/features-bg.jpeg" className="absolute inset-0 h-full object-cover z-0" style={{ scale }} />
+      <motion.img src="/media/features-bg.jpeg" className="absolute inset-0 h-full w-full object-cover z-0" style={{ scale }} />
       <div className="absolute inset-0 bg-black/70 z-1"></div>
       <div className="relative py-32 px-16 grid grid-cols-2 gap-16 z-2">
         <div>
