@@ -18,7 +18,7 @@ export default function Footer({xLink}) {
         </div></FadeInView>
       </div>
       <div className="flex justify-center border-t border-text-primary py-8">
-        <FadeInView><p className="font-medium"> Copyright © 2024-25 ShardspireAI</p></FadeInView>
+        <FadeInView><p className="font-medium"> Copyright © 2024-25 Lexovate</p></FadeInView>
       </div>
     </footer>
   );
